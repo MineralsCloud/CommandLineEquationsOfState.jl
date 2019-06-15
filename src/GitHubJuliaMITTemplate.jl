@@ -1,4 +1,4 @@
-module GitHubJuliaMITTemplate
+module CommandLineEquationsOfState
 
 greet() = print("Hello World!")
 

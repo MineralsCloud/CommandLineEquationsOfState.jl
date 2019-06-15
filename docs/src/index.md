@@ -1,8 +1,8 @@
-# GitHubJuliaMITTemplate.jl
+# CommandLineEquationsOfState.jl
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [GitHubJuliaMITTemplate]
+Modules = [CommandLineEquationsOfState]
 ```

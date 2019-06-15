@@ -1,6 +1,6 @@
-using GitHubJuliaMITTemplate
+using CommandLineEquationsOfState
 using Test
 
-@testset "GitHubJuliaMITTemplate.jl" begin
+@testset "CommandLineEquationsOfState.jl" begin
     # Write your own tests here.
 end
