@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="./docs/src/assets/logo.png" height="200"><br>
+</div>
+
+------
+
 # CommandLineEquationsOfState
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://singularitti.github.io/CommandLineEquationsOfState.jl/stable)
