@@ -29,7 +29,7 @@ function load_settings(file::AbstractString)
         end
         return dict
     end
-end
+end  # function load_settings
 
 parse_settings(file::AbstractString) = parse_settings(load_settings(file))
 function parse_settings(d::AbstractDict)
