@@ -18,13 +18,13 @@ function parse_commandline()
 
     @add_arg_table s["fit"] begin
         "settings"
-            help = ""
+            help = "the settings file location"
             action = :store_arg
     end
 
     @add_arg_table s["calc"] begin
         "settings"
-            help = ""
+            help = "the settings file location"
             action = :store_arg
     end
 
