@@ -40,7 +40,6 @@ function parse_settings(d::AbstractDict)
     dict = deepcopy(d)
     eos = dict["eos"]
     eos isa AbstractDict || error("The parameter 'eos' must be a YAML dict!")
-    length(eos) == length(dict["output"]) || throw(DimensionMismatch("The number of outputs is not equal to the number of equations of state given!"))
     for (key, value) in eos
         dict["eos"][key] = eval(Symbol(key))(value...)
     end
@@ -59,14 +58,16 @@ function run_settings(dict::AbstractDict)
         "p" => PressureRelation
         "b" => BulkModulusRelation
     end
-    for (i, (key, value)) in enumerate(eos)
+    result = Dict()
+    for (key, value) in eos
         fitted = lsqfit(relation, value, collect(xdata), collect(ydata))
         println("The fitted equation of state is: ", fitted)
-        output = dict["output"][i]
-        isfile(output) || touch(output)
-        open(output, "r+") do io
-            JSON.print(io, Dict(key => fitted))
-        end
+        result[key] = fitted
+    end
+    output = dict["output"]
+    isfile(output) || touch(output)
+    open(output, "r+") do io
+        JSON.print(io, result)
     end
 end  # function run_settings
 
