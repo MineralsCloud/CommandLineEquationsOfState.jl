@@ -19,7 +19,7 @@ import JSON
 using MLStyle
 import YAML
 
-export load_settings, parse_settings
+export load_settings, parse_settings, run_settings
 
 function load_settings(file::AbstractString)
     open(file, "r") do io
