@@ -1,7 +1,5 @@
 using ArgParse
 
-using CommandLineEquationsOfState.Settings
-
 function parse_commandline()
     s = ArgParseSettings()
 
