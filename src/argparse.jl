@@ -30,8 +30,3 @@ function parse_commandline()
 
     return parse_args(s)
 end
-
-function main()
-    parsed_args = parse_commandline()
-    run_settings(parsed_args["fit"]["settings"])
-end
