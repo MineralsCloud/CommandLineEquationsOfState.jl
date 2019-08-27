@@ -15,3 +15,21 @@
 [![Build Status](https://api.cirrus-ci.com/github/singularitti/CommandLineEquationsOfState.jl.svg)](https://cirrus-ci.com/github/singularitti/CommandLineEquationsOfState.jl)
 
 This is a command line tool for [`EquationsOfState.jl`](https://github.com/MineralsCloud/EquationsOfState.jl).
+
+## Installation
+
+Install the `master` branch:
+
+```julia
+julia> using Pkg
+
+julia> Pkg.add("https://github.com/MineralsCloud/CommandLineEquationsOfState.jl")
+```
+
+Install the `develop` branch:
+
+```julia
+julia> using Pkg
+
+julia> Pkg.add("https://github.com/MineralsCloud/CommandLineEquationsOfState.jl#develop")
+```
