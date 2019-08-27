@@ -11,8 +11,12 @@ julia>
 """
 module Settings
 
+using CSV
+using EquationsOfState
 using EquationsOfState.Collections
+using EquationsOfState.NonlinearFitting
 import JSON
+using MLStyle
 import YAML
 
 export load_settings, parse_settings
@@ -42,5 +46,28 @@ function parse_settings(d::AbstractDict)
     end
     return dict
 end  # function parse_settings
+
+run_settings(file::AbstractString) = (run_settings ∘ parse_settings ∘ load_settings)(file)
+function run_settings(dict::AbstractDict)
+    eos = dict["eos"]
+    eos isa AbstractDict || error("The parameter 'eos' must be a YAML dict!")
+    any(!isa(e, EquationOfState) for e in values(eos)) && error("The equation of state is not an `EquationsOfState`!")
+    dataframe = CSV.read(dict["input"])
+    xdata, ydata = dataframe[1], dataframe[2]
+    relation = @match dict["relation"] begin
+        "e" => EnergyRelation
+        "p" => PressureRelation
+        "b" => BulkModulusRelation
+    end
+    for (i, (key, value)) in enumerate(eos)
+        fitted = lsqfit(relation, value, collect(xdata), collect(ydata))
+        println("The fitted equation of state is: ", fitted)
+        output = dict["output"][i]
+        isfile(output) || touch(output)
+        open(output, "r+") do io
+            JSON.print(io, Dict(key => fitted))
+        end
+    end
+end  # function run_settings
 
 end
