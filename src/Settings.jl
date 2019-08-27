@@ -11,6 +11,8 @@ julia>
 """
 module Settings
 
+__precompile__()
+
 using CSV
 using EquationsOfState
 using EquationsOfState.Collections
