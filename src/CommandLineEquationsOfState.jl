@@ -1,5 +1,5 @@
 module CommandLineEquationsOfState
 
-greet() = print("Hello World!")
+include("Settings.jl")
 
 end # module
