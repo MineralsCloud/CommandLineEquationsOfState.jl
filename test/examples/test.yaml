@@ -1,0 +1,13 @@
+---
+input: test/examples/data.csv
+relation: E
+eos:
+  Vinet:
+    - 40
+    - 0.5
+    - 4
+  BirchMurnaghan3rd:
+    - 40
+    - 0.5
+    - 4
+output: test/examples/out.json
