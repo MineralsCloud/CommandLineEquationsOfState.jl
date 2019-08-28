@@ -56,9 +56,9 @@ function run_settings(dict::AbstractDict)
     dataframe = CSV.read(dict["input"])
     xdata, ydata = dataframe[1], dataframe[2]
     relation = @match dict["relation"] begin
-        "e" => EnergyRelation
-        "p" => PressureRelation
-        "b" => BulkModulusRelation
+        "E" => EnergyRelation
+        "P" => PressureRelation
+        "B" => BulkModulusRelation
     end
     result = Dict()
     for (key, value) in eos
