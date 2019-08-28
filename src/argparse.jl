@@ -28,3 +28,9 @@ function parse_commandline()
 
     return parse_args(s)
 end
+
+function main()
+    parsed_args = parse_commandline()
+    command = parsed_args["%COMMAND%"]
+    Settings.run_settings(parsed_args[command]["settings"])
+end
