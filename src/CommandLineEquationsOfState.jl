@@ -1,5 +1,8 @@
 module CommandLineEquationsOfState
 
-greet() = print("Hello World!")
+__precompile__()
+
+include("Settings.jl")
+include("argparse.jl")
 
 end # module
